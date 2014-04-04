@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # VERSION: 0.1.0
 # AUTHOR: Joan Llopis <jllopis@acb.es>
-REDIS_PORT_6379_TCP_ADDR="localhost"
-REDIS_PORT_6379_TCP_PORT=6379
 TIMEOUT=${HIPACHE_REDIS_TIMEOUT:=10}
 
 reset="\033[0m"
@@ -32,6 +30,6 @@ done
 
 echo -e "${green}Successfully connected to Redis!${reset}"
 
-echo -3 "${cyan}Starting hipache...${reset}"
+echo -e "${cyan}Starting hipache...${reset}"
 /usr/local/bin/hipache -c /usr/local/lib/node_modules/hipache/config/config.json
 

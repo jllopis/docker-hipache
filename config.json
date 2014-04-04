@@ -10,5 +10,5 @@
         "deadBackendOn500": true,
         "httpKeepAlive": false
     },
-    "driver": ["etcd://$ETCD_PORT_4001_TCP_ADDR:$ETCD_PORT_4001_TCP_PORT"]
+    "driver": ["redis://localhost:6379"]
 }

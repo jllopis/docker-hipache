@@ -1,6 +1,6 @@
 # VERSION          v0.1.0
 # DOCKER-VERSION   0.9.1
-# HIPACHE-VERSION  master
+# HIPACHE-VERSION  0.2.4
 # AUTHOR:          Joan Llopis <jllopis@acb.es>
 # DESCRIPTION:     Image with hipache proxy server
 # TO_BUILD:        docker build -rm -t jllopis/hipache:{version} .

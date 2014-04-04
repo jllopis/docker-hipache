@@ -18,7 +18,7 @@ purple="\033[31m"
 grey="\033[37m"
 
 echo -e "${cyan}${bold}Wait for Redis to start (timeout ${TIMEOUT}s)${reset}"
-(exec sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf)
+(exec /usr/bin/redis-server /etc/redis/redis.conf)
 
 until $(: </dev/tcp/localhost/6379 2>/dev/null); do
 	sleep 1

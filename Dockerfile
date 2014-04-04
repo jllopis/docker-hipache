@@ -27,7 +27,8 @@ ENV NODE_ENV production
 
 # Add init script
 ADD run.sh /usr/local/bin/run.sh
-RUN chmod +x /usr/local/bin/run.sh
+RUN chown root:root /usr/local/bin/run.sh ;\
+    chmod +x /usr/local/bin/run.sh
 
 EXPOSE 80
 EXPOSE 443

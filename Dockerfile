@@ -31,5 +31,6 @@ RUN chmod +x /usr/local/bin/run.sh
 
 EXPOSE 80
 EXPOSE 443
+EXPOSE 6379
 
 ENTRYPOINT ["/usr/local/bin/run.sh"]

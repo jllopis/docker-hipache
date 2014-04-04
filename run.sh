@@ -18,7 +18,9 @@ purple="\033[31m"
 grey="\033[37m"
 
 echo -e "${cyan}${bold}Wait for Redis to start (timeout ${TIMEOUT}s)${reset}"
-until $(: </dev/tcp/${REDIS_PORT_6379_TCP_ADDR}/${REDIS_PORT_6379_TCP_PORT} 2>/dev/null); do
+(exec sudo -u redis /usr/bin/redis-server /etc/redis/redis.conf)
+
+until $(: </dev/tcp/localhost/6379 2>/dev/null); do
 	sleep 1
 	let TIMEOUT=TIMEOUT-1
 	if [ $TIMEOUT -eq 0 ]; then
@@ -28,8 +30,8 @@ until $(: </dev/tcp/${REDIS_PORT_6379_TCP_ADDR}/${REDIS_PORT_6379_TCP_PORT} 2>/d
 	fi
 done
 
-echo -e "${green}Successfully connected to Redis!${reset}"
+echo -e "${green}Redis server successfully started!${reset}"
 
 echo -e "${cyan}Starting hipache...${reset}"
-/usr/local/bin/hipache -c /usr/local/lib/node_modules/hipache/config/config.json
+exec /usr/local/bin/hipache -c /usr/local/lib/node_modules/hipache/config/config.json
 

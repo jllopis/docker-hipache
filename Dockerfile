@@ -9,6 +9,16 @@
 FROM jllopis/nodejs:0.10.26
 MAINTAINER Joan Llopis <jllopisg@gmail.com>
 
+# Configure chris-lea PPA for redis-server
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 136221EE520DDFAF0A905689B9316A7BC7917B12 ;\
+	echo "deb http://ppa.launchpad.net/chris-lea/redis-server/ubuntu precise main" > /etc/apt/sources.list.d/ppa_chris_lea_redis_server_precise.list ;\
+	apt-get -qqy update
+
+# Install redis server
+RUN apt-get -qqy install redis-server
+ADD redis.conf.orig /etc/redis/redis.conf
+RUN chown redis.redis -R /var/lib/redis /var/log/redis
+
 # Install hipache
 RUN npm install hipache@0.2.4 -g
 ADD ./config.json /usr/local/lib/node_modules/hipache/config/config.json
